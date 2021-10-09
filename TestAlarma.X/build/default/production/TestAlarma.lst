@@ -1,15 +1,14 @@
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  1
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00001 
-                      00002 ; PIC18F4550 Configuration Bit Settings
-                      00003 
-                      00004 ; ASM source line config statements
-                      00005 
-                      00006 #include "p18F4550.inc"
+                      00001 ; PIC18F4550 Configuration Bit Settings
+                      00002 
+                      00003 ; ASM source line config statements
+                      00004 
+                      00005 #include "p18F4550.inc"
                       00001         LIST
                       00002 
                       00003 ;==========================================================================
@@ -20,190 +19,183 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00008 ;==========================================================================
                       00009 
                       01765         LIST
-                      00007 
-                      00008 
-                      00009 ; CONFIG1L
-                      00010   CONFIG  PLLDIV = 1            ; PLL Prescaler Selection bits (No prescale (4 MHz oscillator input driv
+                      00006 
+                      00007 ; CONFIG1L
+                      00008   CONFIG  PLLDIV = 1            ; PLL Prescaler Selection bits (No prescale (4 MHz oscillator input driv
                             es PLL directly))
-                      00011   CONFIG  CPUDIV = OSC1_PLL2    ; System Clock Postscaler Selection bits ([Primary Oscillator Src: /1][9
+                      00009   CONFIG  CPUDIV = OSC1_PLL2    ; System Clock Postscaler Selection bits ([Primary Oscillator Src: /1][9
                             6 MHz PLL Src: /2])
-                      00012   CONFIG  USBDIV = 1            ; USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN =
+                      00010   CONFIG  USBDIV = 1            ; USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN =
                              1) (USB clock source comes directly from the primary oscillator block with no postscale)
-                      00013 
-                      00014 ; CONFIG1H
-                      00015   CONFIG  FOSC = XT_XT          ; Oscillator Selection bits (XT oscillator (XT))
-                      00016   CONFIG  FCMEN = OFF           ; Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
-                      00017   CONFIG  IESO = OFF            ; Internal/External Oscillator Switchover bit (Oscillator Switchover mod
+                      00011 
+                      00012 ; CONFIG1H
+                      00013   CONFIG  FOSC = INTOSC_HS      ; Oscillator Selection bits (Internal oscillator, HS oscillator used by 
+                            USB (INTHS))
+                      00014   CONFIG  FCMEN = OFF           ; Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+                      00015   CONFIG  IESO = OFF            ; Internal/External Oscillator Switchover bit (Oscillator Switchover mod
                             e disabled)
-                      00018 
-                      00019 ; CONFIG2L
-                      00020   CONFIG  PWRT = OFF            ; Power-up Timer Enable bit (PWRT disabled)
-                      00021   CONFIG  BOR = ON              ; Brown-out Reset Enable bits (Brown-out Reset enabled in hardware only 
+                      00016 
+                      00017 ; CONFIG2L
+                      00018   CONFIG  PWRT = OFF            ; Power-up Timer Enable bit (PWRT disabled)
+                      00019   CONFIG  BOR = ON              ; Brown-out Reset Enable bits (Brown-out Reset enabled in hardware only 
                             (SBOREN is disabled))
-                      00022   CONFIG  BORV = 3              ; Brown-out Reset Voltage bits (Minimum setting 2.05V)
-                      00023   CONFIG  VREGEN = OFF          ; USB Voltage Regulator Enable bit (USB voltage regulator disabled)
-                      00024 
-                      00025 ; CONFIG2H
-                      00026   CONFIG  WDT = OFF             ; Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDT
+                      00020   CONFIG  BORV = 3              ; Brown-out Reset Voltage bits (Minimum setting 2.05V)
+                      00021   CONFIG  VREGEN = OFF          ; USB Voltage Regulator Enable bit (USB voltage regulator disabled)
+                      00022 
+                      00023 ; CONFIG2H
+                      00024   CONFIG  WDT = OFF             ; Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDT
                             EN bit))
-                      00027   CONFIG  WDTPS = 32768         ; Watchdog Timer Postscale Select bits (1:32768)
-                      00028 
-                      00029 ; CONFIG3H
-                      00030   CONFIG  CCP2MX = ON           ; CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
-                      00031   CONFIG  PBADEN = ON           ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input c
-                            hannels on Reset)
-                      00032   CONFIG  LPT1OSC = OFF         ; Low-Power Timer 1 Oscillator Enable bit (Timer1 configured for higher 
-                            power operation)
-                      00033   CONFIG  MCLRE = ON            ; MCLR Pin Enable bit (MCLR pin enabled; RE3 input pin disabled)
-                      00034 
-                      00035 ; CONFIG4L
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  2
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-                      00036   CONFIG  STVREN = ON           ; Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause
+                      00025   CONFIG  WDTPS = 32768         ; Watchdog Timer Postscale Select bits (1:32768)
+                      00026 
+                      00027 ; CONFIG3H
+                      00028   CONFIG  CCP2MX = ON           ; CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
+                      00029   CONFIG  PBADEN = OFF          ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as digital I/O on
                              Reset)
-                      00037   CONFIG  LVP = ON              ; Single-Supply ICSP Enable bit (Single-Supply ICSP enabled)
-                      00038   CONFIG  ICPRT = OFF           ; Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit (ICPOR
-                            T disabled)
-                      00039   CONFIG  XINST = OFF           ; Extended Instruction Set Enable bit (Instruction set extension and Ind
-                            exed Addressing mode disabled (Legacy mode))
-                      00040 
-                      00041 ; CONFIG5L
-                      00042   CONFIG  CP0 = OFF             ; Code Protection bit (Block 0 (000800-001FFFh) is not code-protected)
-                      00043   CONFIG  CP1 = OFF             ; Code Protection bit (Block 1 (002000-003FFFh) is not code-protected)
-                      00044   CONFIG  CP2 = OFF             ; Code Protection bit (Block 2 (004000-005FFFh) is not code-protected)
-                      00045   CONFIG  CP3 = OFF             ; Code Protection bit (Block 3 (006000-007FFFh) is not code-protected)
-                      00046 
-                      00047 ; CONFIG5H
-                      00048   CONFIG  CPB = OFF             ; Boot Block Code Protection bit (Boot block (000000-0007FFh) is not cod
-                            e-protected)
-                      00049   CONFIG  CPD = OFF             ; Data EEPROM Code Protection bit (Data EEPROM is not code-protected)
-                      00050 
-                      00051 ; CONFIG6L
-                      00052   CONFIG  WRT0 = OFF            ; Write Protection bit (Block 0 (000800-001FFFh) is not write-protected)
-                      00053   CONFIG  WRT1 = OFF            ; Write Protection bit (Block 1 (002000-003FFFh) is not write-protected)
-                      00054   CONFIG  WRT2 = OFF            ; Write Protection bit (Block 2 (004000-005FFFh) is not write-protected)
-                      00055   CONFIG  WRT3 = OFF            ; Write Protection bit (Block 3 (006000-007FFFh) is not write-protected)
-                      00056 
-                      00057 ; CONFIG6H
-                      00058   CONFIG  WRTC = OFF            ; Configuration Register Write Protection bit (Configuration registers (
-                            300000-3000FFh) are not write-protected)
-                      00059   CONFIG  WRTB = OFF            ; Boot Block Write Protection bit (Boot block (000000-0007FFh) is not wr
-                            ite-protected)
-                      00060   CONFIG  WRTD = OFF            ; Data EEPROM Write Protection bit (Data EEPROM is not write-protected)
-                      00061 
-                      00062 ; CONFIG7L
-                      00063   CONFIG  EBTR0 = OFF           ; Table Read Protection bit (Block 0 (000800-001FFFh) is not protected f
-                            rom table reads executed in other blocks)
-                      00064   CONFIG  EBTR1 = OFF           ; Table Read Protection bit (Block 1 (002000-003FFFh) is not protected f
-                            rom table reads executed in other blocks)
-                      00065   CONFIG  EBTR2 = OFF           ; Table Read Protection bit (Block 2 (004000-005FFFh) is not protected f
-                            rom table reads executed in other blocks)
-                      00066   CONFIG  EBTR3 = OFF           ; Table Read Protection bit (Block 3 (006000-007FFFh) is not protected f
-                            rom table reads executed in other blocks)
-                      00067 
-                      00068 ; CONFIG7H
-                      00069   CONFIG  EBTRB = OFF           ; Boot Block Table Read Protection bit (Boot block (000000-0007FFh) is n
-                            ot protected from table reads executed in other blocks)
-                      00070 
-Warning[205]: Found directive in column 1. (list)
-                      00071 list p=18f4550  ;nombres de los registros que vamos a utilizar
-Warning[207]: Found label after column 1. (TEMP)
-  00000020            00072      TEMP equ 0x20 ; registro de memoria F
-Warning[207]: Found label after column 1. (CHIGH)
-  00000064            00073      CHIGH equ .100 ; valor alto de la temperatura 
-Warning[207]: Found label after column 1. (CLOW)
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  3
+                      00030   CONFIG  LPT1OSC = OFF         ; Low-Power Timer 1 Oscillator Enable bit (Timer1 configured for higher 
+                            power operation)
+                      00031   CONFIG  MCLRE = ON            ; MCLR Pin Enable bit (MCLR pin enabled; RE3 input pin disabled)
+                      00032 
+                      00033 ; CONFIG4L
+                      00034   CONFIG  STVREN = ON           ; Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-  00000019            00074      CLOW equ .25 ; valor promedio de temperatura ambiente    
-                      00075     org 0x00
-000000 EF?? F???      00076     goto INIT
-000004                00077 INIT
-                      00078    ;Inicio de programa
-000004 0E00           00079    MOVLW   0x00    ; Valor par iinicializar la variable
-000006 6E20           00080    MOVWF   TEMP    ; cargamos el valor en la variable
-000008 5020           00081    MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
-                      00082  
-                      00083    ;Configuracion puertos analogos y comparadores
-00000A 0E0E           00084    MOVLW   00Eh    ; AN0 como entrada analogica, las demas como digitales 
-00000C 6EC1           00085    MOVWF   ADCON1  ; para puertos digitales
-00000E 0E03           00086    MOVLW   03h     ; valor usado para inicializar datos, direccion
-000010 0E07           00087    MOVLW   07h     ; Apagar
-000012 6EB4           00088    MOVWF   CMCON   ; Comparadores
-                      00089   
-                      00090    ;inicializacion del puerto E
-000014 6A84           00091    CLRF    PORTE   ; inicializa el puerto e limpiando todas sus salidas
-000016 6A89           00092    CLRF    LATA    ; forma alternativa de limpiar las salidas
-000018 0E88           00093    MOVLW   088h    ; valor de literal para fijar en TRISE
-00001A 6E96           00094    MOVWF   TRISE   ; Set RE<2:0> as outputs
-                      00095   
-                      00096    ;inicializacion del puerto A
-                      00097    ;CLRF    PORTA   ;inicializar el puerto A limpiando todas sus salidas
-                      00098    ;CLRF    LATA    ; forma alternativoa para limpiar las salidas
-                      00099    ;MOVLW   07Fh    ; valor para destinar la direccion de datos
-                      00100    ;MOVWF   TRISA   ; Set RE<6:0> as imputs
-                      00101    
-                      00102    ;inicializacion del puerto D
-                      00103    ;clrf TRISD ; Set RD<7:0> as outputs 
-                      00104   
-00001C                00105 VERIFICAR_VALORMAX
-00001C 5020           00106    MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
-00001E 0864           00107    SUBLW CHIGH ; Resta que compara si el valor a entra es mayor, menor o igual a la constante mas alta
-000020 B0D8           00108    BTFSC STATUS,0 ; revisa el registro del bit de carry, si es 1 el resultado de l resta es positivo y s
+                             Reset)
+                      00035   CONFIG  LVP = ON              ; Single-Supply ICSP Enable bit (Single-Supply ICSP enabled)
+                      00036   CONFIG  ICPRT = OFF           ; Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit (ICPOR
+                            T disabled)
+                      00037   CONFIG  XINST = OFF           ; Extended Instruction Set Enable bit (Instruction set extension and Ind
+                            exed Addressing mode disabled (Legacy mode))
+                      00038 
+                      00039 ; CONFIG5L
+                      00040   CONFIG  CP0 = OFF             ; Code Protection bit (Block 0 (000800-001FFFh) is not code-protected)
+                      00041   CONFIG  CP1 = OFF             ; Code Protection bit (Block 1 (002000-003FFFh) is not code-protected)
+                      00042   CONFIG  CP2 = OFF             ; Code Protection bit (Block 2 (004000-005FFFh) is not code-protected)
+                      00043   CONFIG  CP3 = OFF             ; Code Protection bit (Block 3 (006000-007FFFh) is not code-protected)
+                      00044 
+                      00045 ; CONFIG5H
+                      00046   CONFIG  CPB = OFF             ; Boot Block Code Protection bit (Boot block (000000-0007FFh) is not cod
+                            e-protected)
+                      00047   CONFIG  CPD = OFF             ; Data EEPROM Code Protection bit (Data EEPROM is not code-protected)
+                      00048 
+                      00049 ; CONFIG6L
+                      00050   CONFIG  WRT0 = OFF            ; Write Protection bit (Block 0 (000800-001FFFh) is not write-protected)
+                      00051   CONFIG  WRT1 = OFF            ; Write Protection bit (Block 1 (002000-003FFFh) is not write-protected)
+                      00052   CONFIG  WRT2 = OFF            ; Write Protection bit (Block 2 (004000-005FFFh) is not write-protected)
+                      00053   CONFIG  WRT3 = OFF            ; Write Protection bit (Block 3 (006000-007FFFh) is not write-protected)
+                      00054 
+                      00055 ; CONFIG6H
+                      00056   CONFIG  WRTC = OFF            ; Configuration Register Write Protection bit (Configuration registers (
+                            300000-3000FFh) are not write-protected)
+                      00057   CONFIG  WRTB = OFF            ; Boot Block Write Protection bit (Boot block (000000-0007FFh) is not wr
+                            ite-protected)
+                      00058   CONFIG  WRTD = OFF            ; Data EEPROM Write Protection bit (Data EEPROM is not write-protected)
+                      00059 
+                      00060 ; CONFIG7L
+                      00061   CONFIG  EBTR0 = OFF           ; Table Read Protection bit (Block 0 (000800-001FFFh) is not protected f
+                            rom table reads executed in other blocks)
+                      00062   CONFIG  EBTR1 = OFF           ; Table Read Protection bit (Block 1 (002000-003FFFh) is not protected f
+                            rom table reads executed in other blocks)
+                      00063   CONFIG  EBTR2 = OFF           ; Table Read Protection bit (Block 2 (004000-005FFFh) is not protected f
+                            rom table reads executed in other blocks)
+                      00064   CONFIG  EBTR3 = OFF           ; Table Read Protection bit (Block 3 (006000-007FFFh) is not protected f
+                            rom table reads executed in other blocks)
+                      00065 
+                      00066 ; CONFIG7H
+                      00067   CONFIG  EBTRB = OFF           ; Boot Block Table Read Protection bit (Boot block (000000-0007FFh) is n
+                            ot protected from table reads executed in other blocks)
+                      00068 
+Warning[205]: Found directive in column 1. (list)
+                      00069 list p=18f4550  ;nombres de los registros que vamos a utilizar
+Warning[207]: Found label after column 1. (TEMP)
+  00000020            00070      TEMP equ 0x20 ; registro de memoria F
+Warning[207]: Found label after column 1. (CHIGH)
+  00000064            00071      CHIGH equ .100 ; valor alto de la temperatura 
+Warning[207]: Found label after column 1. (CLOW)
+  00000019            00072      CLOW equ .25 ; valor promedio de temperatura ambiente    
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00073     org 0x00
+000000 EF?? F???      00074     goto INIT
+000004                00075 INIT
+                      00076    
+                      00077     ;Inicio de programa
+000004 0E0F           00078    MOVLW   0xF     ; valor dado por el datasheet para acceder al banco 15
+000006 6EE0           00079    MOVWF   BSR     ; aceso al banco 15 donde estan las sfr 
+000008 0E0A           00080    MOVLW   .10    ; Valor par iinicializar la variable
+00000A 6E20           00081    MOVWF   TEMP    ; cargamos el valor en la variable
+00000C 5020           00082    MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
+                      00083  
+                      00084    ;Configuracion puertos analogos y comparadores
+00000E 0E0E           00085    MOVLW   0x0E    ; AN0 como entrada analogica, las demas como digitales 
+000010 6EC1           00086    MOVWF   ADCON1  ; para puertos digitales
+000012 0E03           00087    MOVLW   0x3     ; valor usado para inicializar datos, direccion
+000014 0E07           00088    MOVLW   0x7     ; Apagar
+000016 6EB4           00089    MOVWF   CMCON   ; Comparadores
+                      00090   
+                      00091    ;inicializacion del puerto E
+000018 6A84           00092    CLRF    PORTE   ; inicializa el puerto e limpiando todas sus salidas
+00001A 6A8D           00093    CLRF    LATE    ; forma alternativa de limpiar las salidas
+00001C 0E88           00094    MOVLW   0x88    ; valor de literal para fijar en TRISE
+00001E 6E96           00095    MOVWF   TRISE   ; Set RE<2:0> as outputs
+                      00096   
+000020                00097 VERIFICAR_VALORMAX
+000020 5020           00098    MOVF  TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
+000022 0864           00099    SUBLW CHIGH ; Resta que compara si el valor a entra es mayor, menor o igual a la constante mas alta
+000024 B0D8           00100    BTFSC STATUS,0 ; revisa el registro del bit de carry, si es 1 el resultado de l resta es positivo y s
                             i es 0 el resultado es negativo
-000022 EF?? F???      00109    GOTO Verificar_25
-000026 EF?? F???      00110    GOTO LED_ROJO ; enciende el led rojo, si la temperatura es mayor que 100
-                      00111    
+000026 EF?? F???      00101    GOTO  Verificar_25
+00002A EF?? F???      00102    GOTO  LED_ROJO ; enciende el led rojo, si la temperatura es mayor que 100
+                      00103    
 Warning[207]: Found label after column 1. (Verificar_25)
-00002A                00112    Verificar_25
-00002A 5020           00113         MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
-00002C 0819           00114         SUBLW CLOW ; Resta que compara si el valor a entra es mayor, menor o igual a la constante mas al
+00002E                00104    Verificar_25
+00002E 5020           00105         MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
+000030 0819           00106         SUBLW CLOW ; Resta que compara si el valor a entra es mayor, menor o igual a la constante mas al
                             ta
-00002E B0D8           00115         BTFSC STATUS,0 ; revisa el registro del bit de carry, si es 1 el resultado de l resta es positiv
+000032 B0D8           00107         BTFSC STATUS,0 ; revisa el registro del bit de carry, si es 1 el resultado de l resta es positiv
                             o y si es 0 el resultado es negativo
-000030 EF?? F???      00116         GOTO LED_VERDE ; enciende el led verde, si la temperatura es menor que 25
-000034 EF?? F???      00117         GOTO LED_AMARILLO ; enciende el led amarillo, si la temperatura es mayor que 25 pero menor que 1
+000034 EF?? F???      00108         GOTO LED_VERDE ; enciende el led verde, si la temperatura es menor que 25
+000038 EF?? F???      00109         GOTO LED_AMARILLO ; enciende el led amarillo, si la temperatura es mayor que 25 pero menor que 1
                             0
 Warning[207]: Found label after column 1. (LED_ROJO)
-000038                00118    LED_ROJO
-000038 8484           00119         BSF PORTE,2
-00003A 9284           00120         BCF PORTE,1
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  4
+00003C                00110    LED_ROJO
+00003C 8484           00111         BSF PORTE,2
+00003E 9284           00112         BCF PORTE,1
+000040 9084           00113         BCF PORTE,0
+000042 EF?? F???      00114         GOTO INC_TEMP
+Warning[207]: Found label after column 1. (LED_AMARILLO)
+000046                00115    LED_AMARILLO
+000046 8284           00116         BSF PORTE,1
+000048 9484           00117         BCF PORTE,2
+00004A 9084           00118         BCF PORTE,0
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00003C 9084           00121         BCF PORTE,0
-00003E EF?? F???      00122         GOTO INC_TEMP
-Warning[207]: Found label after column 1. (LED_AMARILLO)
-000042                00123    LED_AMARILLO
-000042 8284           00124         BSF PORTE,1
-000044 9484           00125         BCF PORTE,2
-000046 9084           00126         BCF PORTE,0
-000048 EF?? F???      00127         GOTO INC_TEMP
+00004C EF?? F???      00119         GOTO INC_TEMP
 Warning[207]: Found label after column 1. (LED_VERDE)
-00004C                00128    LED_VERDE
-00004C 8084           00129         BSF PORTE,0
-00004E 9284           00130         BCF PORTE,1
-000050 9484           00131         BCF PORTE,2
-000052 EF?? F???      00132         GOTO INC_TEMP
+000050                00120    LED_VERDE
+000050 8084           00121         BSF PORTE,0
+000052 9284           00122         BCF PORTE,1
+000054 9484           00123         BCF PORTE,2
+000056 EF?? F???      00124         GOTO INC_TEMP
 Warning[207]: Found label after column 1. (INC_TEMP)
-000056                00133    INC_TEMP
-000056 2A20           00134        INCF TEMP,1
-000058 EF?? F???      00135        GOTO VERIFICAR_VALORMAX
-                      00136 
-                      00137  
+00005A                00125    INC_TEMP
+                      00126       ; INCF TEMP,1
+00005A EF?? F???      00127        GOTO VERIFICAR_VALORMAX
+                      00128        
 Warning[205]: Found directive in column 1. (end)
-                      00138 end
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  5
+                      00129 end
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  5
 
 
 SYMBOL TABLE
@@ -262,7 +254,7 @@ BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
 BTOEE                             00000004
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  6
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  6
 
 
 SYMBOL TABLE
@@ -321,7 +313,7 @@ CM0                               00000000
 CM1                               00000001
 CM2                               00000002
 CMCON                             00000FB4
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  7
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  7
 
 
 SYMBOL TABLE
@@ -380,7 +372,7 @@ EEIE                              00000004
 EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  8
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  8
 
 
 SYMBOL TABLE
@@ -439,7 +431,7 @@ HLVDL1                            00000001
 HLVDL2                            00000002
 HLVDL3                            00000003
 I2C_DAT                           00000005
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE  9
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  9
 
 
 SYMBOL TABLE
@@ -451,7 +443,7 @@ I2C_STOP                          00000004
 IDLEIE                            00000004
 IDLEIF                            00000004
 IDLEN                             00000007
-INC_TEMP                          00000056
+INC_TEMP                          0000005A
 INDF0                             00000FEF
 INDF1                             00000FE7
 INDF2                             00000FDF
@@ -498,7 +490,7 @@ LATA2                             00000002
 LATA3                             00000003
 LATA4                             00000004
 LATA5                             00000005
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 10
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 10
 
 
 SYMBOL TABLE
@@ -533,9 +525,9 @@ LATE                              00000F8D
 LATE0                             00000000
 LATE1                             00000001
 LATE2                             00000002
-LED_AMARILLO                      00000042
-LED_ROJO                          00000038
-LED_VERDE                         0000004C
+LED_AMARILLO                      00000046
+LED_ROJO                          0000003C
+LED_VERDE                         00000050
 LVDCON                            00000FD2
 LVDEN                             00000004
 LVDIE                             00000002
@@ -557,7 +549,7 @@ NOT_BOR                           00000000
 NOT_DONE                          00000001
 NOT_IPEN                          00000007
 NOT_PD                            00000002
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 11
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 11
 
 
 SYMBOL TABLE
@@ -616,7 +608,7 @@ PIR2                              00000FA1
 PKTDIS                            00000004
 PLUSW0                            00000FEB
 PLUSW1                            00000FE3
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 12
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 12
 
 
 SYMBOL TABLE
@@ -675,7 +667,7 @@ RBPU                              00000007
 RC0                               00000000
 RC1                               00000001
 RC2                               00000002
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 13
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 13
 
 
 SYMBOL TABLE
@@ -734,7 +726,7 @@ SOFIF                             00000006
 SPBRG                             00000FAF
 SPBRGH                            00000FB0
 SPEN                              00000007
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 14
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 14
 
 
 SYMBOL TABLE
@@ -793,7 +785,7 @@ T08BIT                            00000006
 T0CKI                             00000004
 T0CON                             00000FD5
 T0CS                              00000005
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 15
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 15
 
 
 SYMBOL TABLE
@@ -852,7 +844,7 @@ TMR1L                             00000FCE
 TMR1ON                            00000000
 TMR2                              00000FCC
 TMR2IE                            00000001
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 16
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 16
 
 
 SYMBOL TABLE
@@ -911,7 +903,7 @@ TRISD5                            00000005
 TRISD6                            00000006
 TRISD7                            00000007
 TRISE                             00000F96
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 17
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 17
 
 
 SYMBOL TABLE
@@ -970,7 +962,7 @@ UIR                               00000F68
 UOEMON                            00000006
 UPUEN                             00000004
 URSTIE                            00000000
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 18
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 18
 
 
 SYMBOL TABLE
@@ -987,10 +979,10 @@ UTRDIS                            00000003
 VCFG0                             00000004
 VCFG1                             00000005
 VDIRMAG                           00000007
-VERIFICAR_VALORMAX                0000001C
+VERIFICAR_VALORMAX                00000020
 VREFM                             00000002
 VREFP                             00000003
-Verificar_25                      0000002A
+Verificar_25                      0000002E
 W                                 00000000
 WCOL                              00000007
 WDTCON                            00000FD1
@@ -1029,7 +1021,7 @@ _CONFIG7H                         0030000D
 _CONFIG7L                         0030000C
 _CP0_OFF_5L                       000000FF
 _CP0_ON_5L                        000000FE
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 19
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 19
 
 
 SYMBOL TABLE
@@ -1088,7 +1080,7 @@ _IDLOC5                           00200005
 _IDLOC6                           00200006
 _IDLOC7                           00200007
 _IESO_OFF_1H                      0000007F
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 20
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 20
 
 
 SYMBOL TABLE
@@ -1147,7 +1139,7 @@ _WRT3_OFF_6L                      000000FF
 _WRT3_ON_6L                       000000F7
 _WRTB_OFF_6H                      000000FF
 _WRTB_ON_6H                       000000BF
-MPASM 5.68                    TESTALARMA.ASM   9-30-2021  8:21:15         PAGE 21
+MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 21
 
 
 SYMBOL TABLE

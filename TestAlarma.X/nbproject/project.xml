@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>TestAlarma</name>
+            <name>ALARMA</name>
             <creation-uuid>dbba2969-541a-4570-8cdb-7aeeffe40808</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions/>

@@ -1,10 +1,8 @@
-
 ; PIC18F4550 Configuration Bit Settings
 
 ; ASM source line config statements
 
 #include "p18F4550.inc"
-
 
 ; CONFIG1L
   CONFIG  PLLDIV = 1            ; PLL Prescaler Selection bits (No prescale (4 MHz oscillator input drives PLL directly))
@@ -12,7 +10,7 @@
   CONFIG  USBDIV = 1            ; USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1) (USB clock source comes directly from the primary oscillator block with no postscale)
 
 ; CONFIG1H
-  CONFIG  FOSC = XT_XT          ; Oscillator Selection bits (XT oscillator (XT))
+  CONFIG  FOSC = INTOSC_HS      ; Oscillator Selection bits (Internal oscillator, HS oscillator used by USB (INTHS))
   CONFIG  FCMEN = OFF           ; Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
   CONFIG  IESO = OFF            ; Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
 
@@ -28,7 +26,7 @@
 
 ; CONFIG3H
   CONFIG  CCP2MX = ON           ; CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
-  CONFIG  PBADEN = ON           ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input channels on Reset)
+  CONFIG  PBADEN = OFF          ; PORTB A/D Enable bit (PORTB<4:0> pins are configured as digital I/O on Reset)
   CONFIG  LPT1OSC = OFF         ; Low-Power Timer 1 Oscillator Enable bit (Timer1 configured for higher power operation)
   CONFIG  MCLRE = ON            ; MCLR Pin Enable bit (MCLR pin enabled; RE3 input pin disabled)
 
@@ -75,39 +73,33 @@ list p=18f4550  ;nombres de los registros que vamos a utilizar
     org 0x00
     goto INIT
 INIT
-   ;Inicio de programa
-   MOVLW   0x00    ; Valor par iinicializar la variable
+   
+    ;Inicio de programa
+   MOVLW   0xF	   ; valor dado por el datasheet para acceder al banco 15
+   MOVWF   BSR     ; aceso al banco 15 donde estan las sfr 
+   MOVLW   .10    ; Valor par iinicializar la variable
    MOVWF   TEMP	   ; cargamos el valor en la variable
    MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
  
    ;Configuracion puertos analogos y comparadores
-   MOVLW   00Eh    ; AN0 como entrada analogica, las demas como digitales 
+   MOVLW   0x0E    ; AN0 como entrada analogica, las demas como digitales 
    MOVWF   ADCON1  ; para puertos digitales
-   MOVLW   03h     ; valor usado para inicializar datos, direccion
-   MOVLW   07h     ; Apagar
+   MOVLW   0x3     ; valor usado para inicializar datos, direccion
+   MOVLW   0x7     ; Apagar
    MOVWF   CMCON   ; Comparadores
   
    ;inicializacion del puerto E
    CLRF    PORTE   ; inicializa el puerto e limpiando todas sus salidas
-   CLRF    LATA    ; forma alternativa de limpiar las salidas
-   MOVLW   088h    ; valor de literal para fijar en TRISE
+   CLRF    LATE    ; forma alternativa de limpiar las salidas
+   MOVLW   0x88    ; valor de literal para fijar en TRISE
    MOVWF   TRISE   ; Set RE<2:0> as outputs
   
-   ;inicializacion del puerto A
-   ;CLRF    PORTA   ;inicializar el puerto A limpiando todas sus salidas
-   ;CLRF    LATA    ; forma alternativoa para limpiar las salidas
-   ;MOVLW   07Fh    ; valor para destinar la direccion de datos
-   ;MOVWF   TRISA   ; Set RE<6:0> as imputs
-   
-   ;inicializacion del puerto D
-   ;clrf TRISD ; Set RD<7:0> as outputs 
-  
 VERIFICAR_VALORMAX
-   MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
+   MOVF  TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
    SUBLW CHIGH ; Resta que compara si el valor a entra es mayor, menor o igual a la constante mas alta
    BTFSC STATUS,0 ; revisa el registro del bit de carry, si es 1 el resultado de l resta es positivo y si es 0 el resultado es negativo
-   GOTO Verificar_25
-   GOTO LED_ROJO ; enciende el led rojo, si la temperatura es mayor que 100
+   GOTO  Verificar_25
+   GOTO  LED_ROJO ; enciende el led rojo, si la temperatura es mayor que 100
    
    Verificar_25
 	MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
@@ -131,10 +123,8 @@ VERIFICAR_VALORMAX
 	BCF PORTE,2
 	GOTO INC_TEMP
    INC_TEMP
-       INCF TEMP,1
        GOTO VERIFICAR_VALORMAX
-
- 
+       
 end
     
 
