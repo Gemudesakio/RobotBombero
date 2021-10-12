@@ -77,7 +77,7 @@ INIT
     ;Inicio de programa
    MOVLW   0xF	   ; valor dado por el datasheet para acceder al banco 15
    MOVWF   BSR     ; aceso al banco 15 donde estan las sfr 
-   MOVLW   .10    ; Valor par iinicializar la variable
+   MOVLW   .10   ; Valor par iinicializar la variable
    MOVWF   TEMP	   ; cargamos el valor en la variable
    MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
  

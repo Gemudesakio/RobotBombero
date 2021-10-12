@@ -1,4 +1,4 @@
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  1
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00032 
                       00033 ; CONFIG4L
                       00034   CONFIG  STVREN = ON           ; Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  2
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Warning[207]: Found label after column 1. (CHIGH)
   00000064            00071      CHIGH equ .100 ; valor alto de la temperatura 
 Warning[207]: Found label after column 1. (CLOW)
   00000019            00072      CLOW equ .25 ; valor promedio de temperatura ambiente    
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  3
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -129,7 +129,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00077     ;Inicio de programa
 000004 0E0F           00078    MOVLW   0xF     ; valor dado por el datasheet para acceder al banco 15
 000006 6EE0           00079    MOVWF   BSR     ; aceso al banco 15 donde estan las sfr 
-000008 0E0A           00080    MOVLW   .10    ; Valor par iinicializar la variable
+000008 0E0A           00080    MOVLW   .10   ; Valor par iinicializar la variable
 00000A 6E20           00081    MOVWF   TEMP    ; cargamos el valor en la variable
 00000C 5020           00082    MOVF    TEMP,0  ; Almaceno el valor de la variable en el regisdtro intermediario W
                       00083  
@@ -175,7 +175,7 @@ Warning[207]: Found label after column 1. (LED_AMARILLO)
 000046 8284           00116         BSF PORTE,1
 000048 9484           00117         BCF PORTE,2
 00004A 9084           00118         BCF PORTE,0
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  4
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -190,12 +190,11 @@ Warning[207]: Found label after column 1. (LED_VERDE)
 000056 EF?? F???      00124         GOTO INC_TEMP
 Warning[207]: Found label after column 1. (INC_TEMP)
 00005A                00125    INC_TEMP
-                      00126       ; INCF TEMP,1
-00005A EF?? F???      00127        GOTO VERIFICAR_VALORMAX
-                      00128        
+00005A EF?? F???      00126        GOTO VERIFICAR_VALORMAX
+                      00127        
 Warning[205]: Found directive in column 1. (end)
-                      00129 end
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  5
+                      00128 end
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  5
 
 
 SYMBOL TABLE
@@ -254,7 +253,7 @@ BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
 BTOEE                             00000004
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  6
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  6
 
 
 SYMBOL TABLE
@@ -313,7 +312,7 @@ CM0                               00000000
 CM1                               00000001
 CM2                               00000002
 CMCON                             00000FB4
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  7
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  7
 
 
 SYMBOL TABLE
@@ -372,7 +371,7 @@ EEIE                              00000004
 EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  8
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  8
 
 
 SYMBOL TABLE
@@ -431,7 +430,7 @@ HLVDL1                            00000001
 HLVDL2                            00000002
 HLVDL3                            00000003
 I2C_DAT                           00000005
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE  9
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE  9
 
 
 SYMBOL TABLE
@@ -490,7 +489,7 @@ LATA2                             00000002
 LATA3                             00000003
 LATA4                             00000004
 LATA5                             00000005
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 10
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 10
 
 
 SYMBOL TABLE
@@ -549,7 +548,7 @@ NOT_BOR                           00000000
 NOT_DONE                          00000001
 NOT_IPEN                          00000007
 NOT_PD                            00000002
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 11
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 11
 
 
 SYMBOL TABLE
@@ -608,7 +607,7 @@ PIR2                              00000FA1
 PKTDIS                            00000004
 PLUSW0                            00000FEB
 PLUSW1                            00000FE3
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 12
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 12
 
 
 SYMBOL TABLE
@@ -667,7 +666,7 @@ RBPU                              00000007
 RC0                               00000000
 RC1                               00000001
 RC2                               00000002
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 13
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 13
 
 
 SYMBOL TABLE
@@ -726,7 +725,7 @@ SOFIF                             00000006
 SPBRG                             00000FAF
 SPBRGH                            00000FB0
 SPEN                              00000007
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 14
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 14
 
 
 SYMBOL TABLE
@@ -785,7 +784,7 @@ T08BIT                            00000006
 T0CKI                             00000004
 T0CON                             00000FD5
 T0CS                              00000005
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 15
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 15
 
 
 SYMBOL TABLE
@@ -844,7 +843,7 @@ TMR1L                             00000FCE
 TMR1ON                            00000000
 TMR2                              00000FCC
 TMR2IE                            00000001
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 16
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 16
 
 
 SYMBOL TABLE
@@ -903,7 +902,7 @@ TRISD5                            00000005
 TRISD6                            00000006
 TRISD7                            00000007
 TRISE                             00000F96
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 17
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 17
 
 
 SYMBOL TABLE
@@ -962,7 +961,7 @@ UIR                               00000F68
 UOEMON                            00000006
 UPUEN                             00000004
 URSTIE                            00000000
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 18
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 18
 
 
 SYMBOL TABLE
@@ -1021,7 +1020,7 @@ _CONFIG7H                         0030000D
 _CONFIG7L                         0030000C
 _CP0_OFF_5L                       000000FF
 _CP0_ON_5L                        000000FE
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 19
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 19
 
 
 SYMBOL TABLE
@@ -1080,7 +1079,7 @@ _IDLOC5                           00200005
 _IDLOC6                           00200006
 _IDLOC7                           00200007
 _IESO_OFF_1H                      0000007F
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 20
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 20
 
 
 SYMBOL TABLE
@@ -1139,7 +1138,7 @@ _WRT3_OFF_6L                      000000FF
 _WRT3_ON_6L                       000000F7
 _WRTB_OFF_6H                      000000FF
 _WRTB_ON_6H                       000000BF
-MPASM 5.68                    TESTALARMA.ASM   10-8-2021  8:59:24         PAGE 21
+MPASM 5.68                    TESTALARMA.ASM   10-10-2021  22:06:57         PAGE 21
 
 
 SYMBOL TABLE

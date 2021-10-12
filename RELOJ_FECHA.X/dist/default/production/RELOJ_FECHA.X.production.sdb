@@ -1,0 +1,474 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"6 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\I2C.c
+[v _I2C_Init I2C_Init `(v  1 e 1 0 ]
+"42
+[v _I2C_Start I2C_Start `(v  1 e 1 0 ]
+"53
+[v _I2C_ReStart I2C_ReStart `(v  1 e 1 0 ]
+"64
+[v _I2C_Stop I2C_Stop `(v  1 e 1 0 ]
+"75
+[v _I2C_Ack I2C_Ack `(v  1 e 1 0 ]
+"96
+[v _I2C_NO_Ack I2C_NO_Ack `(v  1 e 1 0 ]
+"117
+[v _I2C_Write I2C_Write `(v  1 e 1 0 ]
+"130
+[v _I2C_Read I2C_Read `(uc  1 e 1 0 ]
+"46 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\LCD_Librery.h
+[v _LCD_Write_Nibble LCD_Write_Nibble `(v  1 e 1 0 ]
+"63
+[v _LCD_Cmd LCD_Cmd `(v  1 e 1 0 ]
+"72
+[v _LCD_Goto LCD_Goto `(v  1 e 1 0 ]
+"91
+[v _LCD_PutC LCD_PutC `(v  1 e 1 0 ]
+"98
+[v _LCD_Print LCD_Print `(v  1 e 1 0 ]
+"109
+[v _LCD_Begin LCD_Begin `(v  1 e 1 0 ]
+"33 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\RTC.c
+[v _Anti_rebote Anti_rebote `(b  1 e 0 0 ]
+"54
+[v _BCD_a_Decimal BCD_a_Decimal `(uc  1 e 1 0 ]
+"61
+[v _Decimal_a_BCD Decimal_a_BCD `(uc  1 e 1 0 ]
+"68
+[v _Reloj_Calendario Reloj_Calendario `(v  1 e 1 0 ]
+"102
+[v _Parpadeo Parpadeo `(v  1 e 1 0 ]
+"114
+[v _Establecer_Hora_Fecha Establecer_Hora_Fecha `(uc  1 e 1 0 ]
+"167
+[v _main main `(v  1 e 1 0 ]
+[s S107 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+]
+"2319 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f4550.h
+[s S115 . 1 `uc 1 AN0 1 0 :1:0 
+`uc 1 AN1 1 0 :1:1 
+`uc 1 AN2 1 0 :1:2 
+`uc 1 AN3 1 0 :1:3 
+`uc 1 T0CKI 1 0 :1:4 
+`uc 1 AN4 1 0 :1:5 
+`uc 1 OSC2 1 0 :1:6 
+]
+[s S123 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 VREFM 1 0 :1:2 
+`uc 1 VREFP 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LVDIN 1 0 :1:5 
+]
+[s S129 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 HLVDIN 1 0 :1:5 
+]
+[s S132 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+]
+[u S134 . 1 `S107 1 . 1 0 `S115 1 . 1 0 `S123 1 . 1 0 `S129 1 . 1 0 `S132 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES134  1 e 1 @3968 ]
+[s S21 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"3248
+[s S30 . 1 `uc 1 LD0 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+`uc 1 LD2 1 0 :1:2 
+`uc 1 LD3 1 0 :1:3 
+`uc 1 LD4 1 0 :1:4 
+`uc 1 LD5 1 0 :1:5 
+`uc 1 LD6 1 0 :1:6 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S39 . 1 `S21 1 . 1 0 `S30 1 . 1 0 ]
+[v _LATDbits LATDbits `VES39  1 e 1 @3980 ]
+"3383
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"3580
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S67 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"3986
+[s S76 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+[u S85 . 1 `S67 1 . 1 0 `S76 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES85  1 e 1 @3989 ]
+[s S470 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 SPPIF 1 0 :1:7 
+]
+"4441
+[s S479 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+[u S485 . 1 `S470 1 . 1 0 `S479 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES485  1 e 1 @3998 ]
+"6497
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"6717
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
+[s S449 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"6734
+[u S458 . 1 `S449 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES458  1 e 1 @4037 ]
+[s S421 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"6798
+[s S427 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S432 . 1 `S421 1 . 1 0 `S427 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES432  1 e 1 @4038 ]
+[s S280 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"6930
+[s S283 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S286 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S295 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S300 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DAT 1 0 :1:5 
+]
+[s S306 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S311 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S314 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S317 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S322 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[s S327 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S332 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+`uc 1 DA 1 0 :1:5 
+]
+[s S338 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S343 . 1 `S280 1 . 1 0 `S283 1 . 1 0 `S286 1 . 1 0 `S295 1 . 1 0 `S300 1 . 1 0 `S306 1 . 1 0 `S311 1 . 1 0 `S314 1 . 1 0 `S317 1 . 1 0 `S322 1 . 1 0 `S327 1 . 1 0 `S332 1 . 1 0 `S338 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES343  1 e 1 @4039 ]
+"7094
+[v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
+"7100
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"7882
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"37 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\LCD_Librery.h
+[v _RS RS `b  1 e 0 0 ]
+"14 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\RTC.c
+[v _hours hours `uc  1 e 1 0 ]
+"15
+[v _minutes minutes `uc  1 e 1 0 ]
+"16
+[v _seconds seconds `uc  1 e 1 0 ]
+"17
+[v _year year `uc  1 e 1 0 ]
+"18
+[v _month month `uc  1 e 1 0 ]
+"19
+[v _day day `uc  1 e 1 0 ]
+"20
+[v _i i `uc  1 e 1 0 ]
+"167
+[v _main main `(v  1 e 1 0 ]
+{
+"231
+} 0
+"68
+[v _Reloj_Calendario Reloj_Calendario `(v  1 e 1 0 ]
+{
+"70
+[v Reloj_Calendario@Time Time `[15]uc  1 s 15 Time ]
+"71
+[v Reloj_Calendario@Date Date `[17]uc  1 s 17 Date ]
+"98
+} 0
+"54
+[v _BCD_a_Decimal BCD_a_Decimal `(uc  1 e 1 0 ]
+{
+[v BCD_a_Decimal@numero numero `uc  1 a 1 wreg ]
+[v BCD_a_Decimal@numero numero `uc  1 a 1 wreg ]
+"56
+[v BCD_a_Decimal@numero numero `uc  1 a 1 1 ]
+"57
+} 0
+"109 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\LCD_Librery.h
+[v _LCD_Begin LCD_Begin `(v  1 e 1 0 ]
+{
+"143
+} 0
+"117 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\I2C.c
+[v _I2C_Write I2C_Write `(v  1 e 1 0 ]
+{
+[v I2C_Write@data data `uc  1 a 1 wreg ]
+[v I2C_Write@data data `uc  1 a 1 wreg ]
+"119
+[v I2C_Write@data data `uc  1 a 1 0 ]
+"126
+} 0
+"64
+[v _I2C_Stop I2C_Stop `(v  1 e 1 0 ]
+{
+"71
+} 0
+"42
+[v _I2C_Start I2C_Start `(v  1 e 1 0 ]
+{
+"49
+} 0
+"130
+[v _I2C_Read I2C_Read `(uc  1 e 1 0 ]
+{
+"144
+} 0
+"53
+[v _I2C_ReStart I2C_ReStart `(v  1 e 1 0 ]
+{
+"60
+} 0
+"96
+[v _I2C_NO_Ack I2C_NO_Ack `(v  1 e 1 0 ]
+{
+"113
+} 0
+"6
+[v _I2C_Init I2C_Init `(v  1 e 1 0 ]
+{
+[v I2C_Init@frecuencia frecuencia `ul  1 p 4 13 ]
+"38
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"8
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"31
+} 0
+"75 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\I2C.c
+[v _I2C_Ack I2C_Ack `(v  1 e 1 0 ]
+{
+"92
+} 0
+"114 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\RTC.c
+[v _Establecer_Hora_Fecha Establecer_Hora_Fecha `(uc  1 e 1 0 ]
+{
+[v Establecer_Hora_Fecha@x x `uc  1 a 1 wreg ]
+[v Establecer_Hora_Fecha@x x `uc  1 a 1 wreg ]
+[v Establecer_Hora_Fecha@y y `uc  1 p 1 8 ]
+[v Establecer_Hora_Fecha@parametro parametro `uc  1 p 1 9 ]
+[v Establecer_Hora_Fecha@x x `uc  1 a 1 11 ]
+"163
+} 0
+"102
+[v _Parpadeo Parpadeo `(v  1 e 1 0 ]
+{
+"104
+[v Parpadeo@j j `uc  1 a 1 0 ]
+"110
+} 0
+"91 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\LCD_Librery.h
+[v _LCD_PutC LCD_PutC `(v  1 e 1 0 ]
+{
+[v LCD_PutC@LCD_Char LCD_Char `uc  1 a 1 wreg ]
+[v LCD_PutC@LCD_Char LCD_Char `uc  1 a 1 wreg ]
+"93
+[v LCD_PutC@LCD_Char LCD_Char `uc  1 a 1 2 ]
+"96
+} 0
+"98
+[v _LCD_Print LCD_Print `(v  1 e 1 0 ]
+{
+"100
+[v LCD_Print@i i `uc  1 a 1 7 ]
+"98
+[v LCD_Print@LCD_Str LCD_Str `*.35uc  1 p 2 2 ]
+"107
+} 0
+"72
+[v _LCD_Goto LCD_Goto `(v  1 e 1 0 ]
+{
+[v LCD_Goto@col col `uc  1 a 1 wreg ]
+[v LCD_Goto@col col `uc  1 a 1 wreg ]
+[v LCD_Goto@row row `uc  1 p 1 3 ]
+[v LCD_Goto@col col `uc  1 a 1 4 ]
+"89
+} 0
+"63
+[v _LCD_Cmd LCD_Cmd `(v  1 e 1 0 ]
+{
+[v LCD_Cmd@Command Command `uc  1 a 1 wreg ]
+[v LCD_Cmd@Command Command `uc  1 a 1 wreg ]
+"65
+[v LCD_Cmd@Command Command `uc  1 a 1 2 ]
+"70
+} 0
+"46
+[v _LCD_Write_Nibble LCD_Write_Nibble `(v  1 e 1 0 ]
+{
+[v LCD_Write_Nibble@n n `uc  1 a 1 wreg ]
+[v LCD_Write_Nibble@n n `uc  1 a 1 wreg ]
+"48
+[v LCD_Write_Nibble@n n `uc  1 a 1 1 ]
+"61
+} 0
+"33 D:\SoftwareWork\WorkSpaces\WorkSpaceMplabX\GitHub\RELOJ_FECHA.X\RTC.c
+[v _Anti_rebote Anti_rebote `(b  1 e 0 0 ]
+{
+"36
+[v Anti_rebote@i i `uc  1 a 1 2 ]
+"35
+[v Anti_rebote@contador contador `uc  1 a 1 1 ]
+"50
+} 0
+"61
+[v _Decimal_a_BCD Decimal_a_BCD `(uc  1 e 1 0 ]
+{
+[v Decimal_a_BCD@numero numero `uc  1 a 1 wreg ]
+[v Decimal_a_BCD@numero numero `uc  1 a 1 wreg ]
+"63
+[v Decimal_a_BCD@numero numero `uc  1 a 1 10 ]
+"64
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"11
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"8
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"35
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"8
+[v ___awdiv@dividend dividend `i  1 p 2 0 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+"42
+} 0
